@@ -106,28 +106,28 @@
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.addressText || "")}`;
   }
 
-  /* ------------------------------------------------------------
-   * updateContactLinks — single source of truth for every
-   * WhatsApp / Facebook / Maps link on the page
-   * ---------------------------------------------------------- */
-  function updateContactLinks(config) {
-    const waUrl = buildWhatsAppUrl(config);
-    const fbUrl = config.facebookUrl || "https://www.facebook.com/";
-    const mapsUrl = buildMapsUrl(config);
+/* ------------------------------------------------------------
+ * updateContactLinks — single source of truth for every
+ * WhatsApp / Facebook / Maps link on the page
+ * ---------------------------------------------------------- */
+function updateContactLinks(config) {
+  const waUrl = buildWhatsAppUrl(config);
+  const fbUrl = config.facebookUrl || "https://www.facebook.com/";
+  const mapsUrl = buildMapsUrl(config);
 
-    document.querySelectorAll("[data-whatsapp-link]").forEach((el) => (el.href = waUrl));
-    document.querySelectorAll("[data-facebook-link]").forEach((el) => (el.href = fbUrl));
-    document.querySelectorAll("[data-maps-link]").forEach((el) => (el.href = mapsUrl));
+  // Asigna las URLs a todos los elementos con los atributos data-* correspondientes
+  document.querySelectorAll("[data-whatsapp-link]").forEach((el) => (el.href = waUrl));
+  document.querySelectorAll("[data-facebook-link]").forEach((el) => (el.href = fbUrl));
+  document.querySelectorAll("[data-maps-link]").forEach((el) => (el.href = mapsUrl));
 
-    // If Facebook / WhatsApp aren't configured yet, avoid dead-looking buttons
-    // pointing nowhere useful — keep them functional but visually unobtrusive.
-    if (!config.facebookUrl) {
-      document.querySelectorAll("[data-facebook-link]").forEach((el) => {
-        el.setAttribute("aria-disabled", "true");
-        el.title = "Enlace de Facebook pendiente de configurar";
-      });
-    }
+  // Maneja el estado cuando Facebook no está configurado en config.js
+  if (!config.facebookUrl) {
+    document.querySelectorAll("[data-facebook-link]").forEach((el) => {
+      el.setAttribute("aria-disabled", "true");
+      el.title = "Enlace de Facebook pendiente de configurar";
+    });
   }
+}
 
   /* ------------------------------------------------------------
    * applyBrand — school name, logo, enrollment text, SEO fields
