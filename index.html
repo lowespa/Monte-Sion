@@ -263,19 +263,19 @@
 
     <div class="location-grid">
       <!-- Mapa como imagen estática con link -->
-      <a href="https://maps.app.goo.gl/d6yqgi2vbpbjYvNU9" target="_blank" rel="noopener" class="map-container" style="display:block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md);">
-        <img 
-          src="https://maps.googleapis.com/maps/api/staticmap?center=-38.7651583,-72.7517001&zoom=15&size=800x400&maptype=roadmap&markers=color:red%7C-38.7651583,-72.7517001&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"
-          alt="Mapa de ubicación de Escuela de Párvulos Monte Sión en Labranza, Temuco"
-          width="100%"
-          height="350"
-          style="display:block; width:100%; height:350px; object-fit:cover;"
-          loading="lazy"
-        >
-        <div style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); background:rgba(47,107,79,0.9); color:#fff; padding:8px 20px; border-radius:999px; font-weight:700; font-size:0.9rem; backdrop-filter:blur(4px); pointer-events:none;">
-          📍 Haz clic para abrir en Google Maps
-        </div>
-      </a>
+      <a href="https://maps.app.goo.gl/d6yqgi2vbpbjYvNU9" target="_blank" rel="noopener" class="map-container" style="display:block; position:relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md);">
+  <img 
+    src="assets\img\ubi.png"
+    alt="Mapa de ubicación de Escuela de Párvulos Monte Sión en Labranza, Temuco"
+    width="100%"
+    height="350"
+    style="display:block; width:100%; height:350px; object-fit:cover;"
+    loading="lazy"
+  >
+  <div style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); background:rgba(47,107,79,0.9); color:#fff; padding:8px 20px; border-radius:999px; font-weight:700; font-size:0.9rem; backdrop-filter:blur(4px); pointer-events:none; white-space:nowrap;">
+    📍 Haz clic para abrir en Google Maps
+  </div>
+</a>
 
       <div class="location-details">
         <ul class="location-list">
@@ -344,46 +344,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         UBICACIÓN
-    ============================================================ -->
-    <section id="ubicacion" class="section section-alt">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Ubicación</span>
-          <h2>Encuéntranos en Labranza</h2>
-          <p>Visítanos o contáctanos para coordinar una visita.</p>
-        </div>
-
-        <div class="location-grid">
-          <div class="map-visual" role="img" aria-label="Mapa referencial de la ubicación de Escuela de Párvulos Monte Sión en Labranza, Temuco">
-            <div class="ring ring--1"></div>
-            <div class="ring ring--2"></div>
-            <span class="pin">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            </span>
-          </div>
-
-          <div class="location-details">
-            <ul class="location-list" data-schedule-wrapper>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                <div><strong data-field="schoolName">Escuela de Párvulos Monte Sión</strong><span class="detail" data-field="addressText">Labranza, Temuco, Región de La Araucanía, Chile</span></div>
-              </li>
-            </ul>
-
-            <ul class="location-list" data-schedule></ul>
-
-            <a class="btn btn-primary btn-block" data-maps-link href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-              📍 Cómo llegar
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
+       <!-- ============================================================
          CTA FINAL
     ============================================================ -->
     <section class="section">
