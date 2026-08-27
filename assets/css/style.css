@@ -13,8 +13,7 @@
    1. VARIABLES
    ============================================================ */
 :root {
-  /* Color: forest green + marigold + sage, warm paper background.
-     Deliberately not the generic cream+terracotta pairing. */
+  /* Color: forest green + marigold + sage, warm paper background. */
   --color-primary: #2f6b4f;
   --color-primary-dark: #1e4a34;
   --color-primary-light: #dcece2;
@@ -45,7 +44,6 @@
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 32px;
-  /* Signature organic "blob" shape used for image frames & icon badges */
   --blob-shape: 30% 70% 65% 35% / 35% 30% 70% 65%;
 
   --space-1: 0.5rem;
@@ -175,7 +173,6 @@ h3 { font-size: var(--fs-h3); }
 .brand-name span { display: block; font-family: var(--font-body); font-weight: 500; font-size: 0.7rem; color: var(--color-text-light); }
 
 .main-nav { display: none; }
-
 .header-cta { display: none; }
 
 .menu-toggle {
@@ -320,7 +317,7 @@ body.menu-open { overflow: hidden; }
 .btn-block { width: 100%; }
 
 /* ============================================================
-   8. SECTIONS (generic rhythm)
+   8. SECTIONS
    ============================================================ */
 .section { padding-block: var(--space-5); }
 .section-alt { background: var(--color-surface); }
@@ -349,7 +346,7 @@ body.menu-open { overflow: hidden; }
 .cta-strip .btn-primary { margin-top: var(--space-3); }
 
 /* ============================================================
-   9. CARDS (generic)
+   9. CARDS
    ============================================================ */
 .card {
   background: var(--color-surface);
@@ -372,7 +369,7 @@ body.menu-open { overflow: hidden; }
 .icon-badge svg { width: 24px; height: 24px; }
 
 /* ============================================================
-   10. EDUCATIONAL PROPOSAL / WHY MONTE SION / METHODOLOGY
+   10. EDUCATIONAL PROPOSAL / METHODOLOGY
    ============================================================ */
 .why-grid { display: grid; gap: var(--space-3); }
 .why-grid .card p { color: var(--color-text-light); margin-top: 0.35rem; font-size: 0.95rem; }
@@ -390,7 +387,6 @@ body.menu-open { overflow: hidden; }
 .method-card h3 { margin-bottom: 0.35rem; }
 .method-card p { color: var(--color-text-light); }
 
-/* Transition skills — 12 cards, mobile 2 columns */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -578,7 +574,7 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ============================================================
-   18. FLOATING BUTTONS
+   18. FLOATING BUTTONS (DESKTOP)
    ============================================================ */
 .floating-actions {
   position: fixed;
@@ -641,103 +637,6 @@ body.menu-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-}
-
-/* ============================================================
-   20. RESPONSIVE
-   ============================================================ */
-@media (min-width: 640px) {
-  .skills-grid { grid-template-columns: repeat(3, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .values-list { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (min-width: 860px) {
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-4); align-items: center; }
-  .hero-media { margin-bottom: 0; aspect-ratio: 1/1; order: 2; }
-  .hero-actions { flex-direction: row; }
-  .why-grid { grid-template-columns: repeat(3, 1fr); }
-  .method-grid { grid-template-columns: repeat(2, 1fr); }
-  .levels-grid { grid-template-columns: repeat(2, 1fr); }
-  .facilities-grid { grid-template-columns: repeat(3, 1fr); }
-  .location-grid { grid-template-columns: 1fr 1fr; align-items: center; }
-}
-
-@media (min-width: 960px) {
-  .site-header .container { padding-inline: 2rem; }
-  .menu-toggle { display: none; }
-  .main-nav { display: block; }
-  .main-nav ul { display: flex; align-items: center; gap: 1.8rem; }
-  .main-nav a {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-text);
-    position: relative;
-    padding-block: 0.3rem;
-  }
-  .main-nav a::after {
-    content: "";
-    position: absolute; left: 0; right: 100%; bottom: 0;
-    height: 2px; background: var(--color-primary);
-    transition: right var(--transition-fast);
-  }
-  .main-nav a:hover::after { right: 0; }
-  .header-cta { display: inline-flex; }
-
-  .skills-grid { grid-template-columns: repeat(4, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(5, 1fr); }
-  .values-list { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (min-width: 1100px) {
-  .hero { padding-block: var(--space-6); }
-}
-
-/* ============================================================
-   21. ACCESSIBILITY
-   ============================================================ */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  background: var(--color-primary-dark);
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  z-index: 999;
-  border-radius: 0 0 8px 0;
-}
-.skip-link:focus {
-  left: 0;
-  top: 0;
-}
-
-a:focus-visible,
-button:focus-visible,
-.gallery-item:focus-visible,
-input:focus-visible {
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 2px;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Scroll reveal (progressive enhancement — JS adds .is-visible) */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
 /* ============================================================
@@ -840,33 +739,7 @@ input:focus-visible {
 }
 
 /* ============================================================
-   MAPA EMBEBIDO
-============================================================ */
-.map-container {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-
-.map-container iframe {
-  display: block;
-  width: 100%;
-  height: 350px;
-}
-
-@media (min-width: 860px) {
-  .map-container iframe {
-    height: 450px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .testimonials-track {
-    transition: none;
-  }
-}
-/* ============================================================
-   MAPA ESTÁTICO
+   MAPA ESTÁTICO & EMBEBIDO
 ============================================================ */
 .map-container {
   position: relative;
@@ -875,6 +748,7 @@ input:focus-visible {
   box-shadow: var(--shadow-md);
 }
 
+.map-container iframe,
 .map-container img {
   display: block;
   width: 100%;
@@ -887,44 +761,73 @@ input:focus-visible {
 }
 
 @media (min-width: 860px) {
+  .map-container iframe,
   .map-container img {
     height: 450px;
   }
 }
 
 /* ============================================================
-   AJUSTES MOBILE-FIRST Y BARRAS FLOTANTES (STICKY CTA)
+   20. RESPONSIVE & ADJUSTMENTS
    ============================================================ */
 
-/* Prevenir desbordamientos horizontales en dispositivos móviles */
+/* Prevenir desbordamientos horizontales */
 html, body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
-/* 1. GRILLAS ADAPTADAS A MÓVIL (3 TARJETAS POR FILA EN MOBILE) */
+/* BARRA FLOTANTE MÓVIL (STICKY CTA) */
+.floating-actions-mobile {
+  display: none; /* Oculto por defecto en desktop */
+}
+
 @media (max-width: 767px) {
-  /* Grilla general de cards (Valores, Métodos, Habilidades, Niveles, Instalaciones, etc.) */
+  /* 1. OCULTAR ICONOS Y BOTONES FLOTANTES INDIVIDUALES EN MÓVIL */
+  .floating-actions,
+  .floating-buttons,
+  .floating-whatsapp,
+  .floating-call,
+  .floating-action-btn,
+  .floating-widget,
+  .fab,
+  [class*="floating-icon"],
+  [class*="floating-btn"]:not(.btn-sticky) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* 2. GRILLAS ADAPTADAS EN MÓVIL */
+
+  /* Grilla general de tarjetas (Valores, Métodos, Habilidades, etc.): 3 columnas */
   .grid-cards,
   .values-grid,
-  .levels-grid,
   .skills-grid,
   .facilities-grid,
   .prep-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* Muestra 3 tarjetas en horizontal */
-    gap: 0.5rem !important; /* Espaciado compacto para resoluciones pequeñas */
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
   }
 
-  /* Ajuste tipográfico y de padding compacto para tarjetas en móvil */
+  /* SECCIÓN NUESTROS NIVELES: Exactamente 2 tarjetas por fila */
+  .levels-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Compactación para celdas de la grilla en móvil */
   .card, 
   .value-card, 
   .level-card, 
   .skill-card, 
   .facility-card {
     padding: 0.65rem 0.5rem !important;
-    min-width: 0 !important; /* Evita que los textos desborden la celda de la grilla */
+    min-width: 0 !important;
     text-align: center;
   }
 
@@ -934,6 +837,7 @@ html, body {
   .skill-card h3 {
     font-size: 0.85rem !important;
     line-height: 1.2 !important;
+    margin-bottom: 0.3rem !important;
   }
 
   .card-body, 
@@ -951,45 +855,15 @@ html, body {
     height: 28px !important;
     margin-inline: auto;
   }
-}
 
-/* Restablece la grilla en Tablet y Desktop */
-@media (min-width: 768px) {
-  .grid-cards,
-  .values-grid,
-  .skills-grid,
-  .facilities-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-    gap: 1.5rem !important;
-  }
-
-  .levels-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-/* 2. BARRA FLOTANTE DE ACCIÓN STICKY EN MOBILE */
-.floating-actions-mobile {
-  display: none; /* Oculto por defecto en desktop */
-}
-
-@media (max-width: 767px) {
-  /* Ocultar iconos / botones flotantes por defecto en mobile */
-  .floating-buttons,
-  .floating-whatsapp,
-  .floating-call,
-  .floating-action-btn {
-    display: none !important;
-  }
-
-  /* Mostrar la barra sticky fija al pie */
+  /* 3. BARRA STICKY INFERIOR FIJA */
   .floating-actions-mobile {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 999;
-    display: flex;
+    z-index: 9999;
+    display: flex !important;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
@@ -1035,17 +909,119 @@ html, body {
     flex-shrink: 0;
   }
 
-  /* Margen inferior para que el footer no quede tapado por la barra sticky */
   body {
-    padding-bottom: 70px;
+    padding-bottom: 75px !important; /* Espacio para no solapar el footer con la barra flotante */
   }
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(100%);
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (min-width: 640px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .values-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .grid-cards,
+  .values-grid,
+  .skills-grid,
+  .facilities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 1.5rem !important;
   }
-  to {
-    transform: translateY(0);
+
+  .levels-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
+}
+
+@media (min-width: 860px) {
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-4); align-items: center; }
+  .hero-media { margin-bottom: 0; aspect-ratio: 1/1; order: 2; }
+  .hero-actions { flex-direction: row; }
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .method-grid { grid-template-columns: repeat(2, 1fr); }
+  .facilities-grid { grid-template-columns: repeat(3, 1fr); }
+  .location-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+
+@media (min-width: 960px) {
+  .site-header .container { padding-inline: 2rem; }
+  .menu-toggle { display: none; }
+  .main-nav { display: block; }
+  .main-nav ul { display: flex; align-items: center; gap: 1.8rem; }
+  .main-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    position: relative;
+    padding-block: 0.3rem;
+  }
+  .main-nav a::after {
+    content: "";
+    position: absolute; left: 0; right: 100%; bottom: 0;
+    height: 2px; background: var(--color-primary);
+    transition: right var(--transition-fast);
+  }
+  .main-nav a:hover::after { right: 0; }
+  .header-cta { display: inline-flex; }
+
+  .skills-grid { grid-template-columns: repeat(4, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(5, 1fr); }
+  .values-list { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .hero { padding-block: var(--space-6); }
+}
+
+/* ============================================================
+   21. ACCESSIBILITY
+   ============================================================ */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 999;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+.gallery-item:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .testimonials-track { transition: none; }
 }
