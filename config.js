@@ -25,8 +25,8 @@ const CONFIG = {
   // ==============================
   phones: [
     { number: "+56 9 7855 1360", label: "WhatsApp", isWhatsApp: true },
-    { number: "+56 9 7855 1350", label: "Teléfono" },
-    { number: "+56 9 7855 1340", label: "Teléfono" }
+    { number: "+56 45 231 7514", label: "Teléfono" },
+    { number: "+56 9 7855 0869", label: "Teléfono" }
   ],
   // Teléfono principal para WhatsApp (el que se usa en los botones)
   whatsappNumber: "56978551360",
@@ -36,7 +36,8 @@ const CONFIG = {
   // ==============================
   // REDES SOCIALES
   // ==============================
-  facebookUrl: "https://www.facebook.com/escueladeparvulos.montesion/photos?locale=es_LA",
+  facebookUrl: "https://www.facebook.com/escueladeparvulos.montesion",
+  instagramUrl: "https://www.instagram.com/escuela_montesion?igsi=c2l0NWtwdTAyaWtp",
 
   // ==============================
   // UBICACIÓN

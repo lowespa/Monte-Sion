@@ -1025,3 +1025,92 @@ input:focus-visible {
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .testimonials-track { transition: none; }
 }
+/* ============================================================
+   ELIMINAR MENÚ EN MÓVIL - LANDING PURA
+   ============================================================ */
+
+/* Ocultar el botón de menú en todos los dispositivos */
+.menu-toggle {
+  display: none !important;
+}
+
+/* Ocultar navegación móvil */
+.mobile-nav {
+  display: none !important;
+}
+
+/* En móviles, ocultar navegación desktop y mostrar solo CTA */
+@media (max-width: 959px) {
+  .main-nav {
+    display: none !important;
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .brand {
+    flex: 1;
+  }
+  
+  .header-cta {
+    display: inline-flex !important;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* En desktop, mostrar navegación normal */
+@media (min-width: 960px) {
+  .main-nav {
+    display: block !important;
+  }
+  
+  .header-cta {
+    display: inline-flex !important;
+  }
+}
+
+/* ============================================================
+   INSTAGRAM - COLOR Y ESTILOS
+   ============================================================ */
+
+:root {
+  --color-instagram: #E4405F;
+}
+
+/* Botón Instagram en footer y galería */
+.btn-instagram {
+  background: var(--color-instagram);
+  color: #fff;
+  border-color: var(--color-instagram);
+}
+
+.btn-instagram:hover {
+  background: #c13542;
+  border-color: #c13542;
+  color: #fff;
+}
+
+/* Botón flotante Instagram */
+.fab-instagram {
+  background: var(--color-instagram);
+  color: #fff;
+}
+
+.fab-instagram:hover {
+  background: #c13542;
+}
+
+/* Barra sticky móvil - Instagram */
+@media (max-width: 767px) {
+  .floating-actions-mobile .btn-instagram {
+    background-color: var(--color-instagram);
+  }
+  
+  .floating-actions-mobile .btn-instagram:hover {
+    background-color: #c13542;
+  }
+}

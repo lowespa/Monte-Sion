@@ -41,6 +41,7 @@
     calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>',
     whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 20.2 12 8.2 8.2 0 0 1 12 20.2Z"/></svg>',
     facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3v-1.9c0-.9.2-1.5 1.5-1.5h1.6V4.2C15.9 4.1 14.9 4 13.8 4c-2.5 0-4.1 1.5-4.1 4.2v2.2H7v3h2.7V21h3.8Z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>',
     close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     "chevron-left": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>',
     "chevron-right": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
@@ -48,33 +49,6 @@
 
   function icon(name) {
     return ICONS[name] || ICONS.sprout;
-  }
-
-  /* ------------------------------------------------------------
-   * init — entry point
-   * ---------------------------------------------------------- */
-  function init() {
-    const config = loadConfig();
-    if (!config) return;
-
-    document.documentElement.lang = "es";
-
-    updateContactLinks(config);
-    renderLevels(config);
-    renderSchedule(config);
-    renderValues(config);
-    renderMethodology(config);
-    renderSkills(config);
-    renderFacilities(config);
-    renderGallery(config);
-    applyBrand(config);
-
-    initMobileMenu();
-    initSmoothScroll();
-    initFloatingButtons(config);
-    initGallery();
-    initLightbox(config);
-    initScrollAnimations();
   }
 
   /* ------------------------------------------------------------
@@ -106,28 +80,38 @@
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.addressText || "")}`;
   }
 
-/* ------------------------------------------------------------
- * updateContactLinks — single source of truth for every
- * WhatsApp / Facebook / Maps link on the page
- * ---------------------------------------------------------- */
-function updateContactLinks(config) {
-  const waUrl = buildWhatsAppUrl(config);
-  const fbUrl = config.facebookUrl || "https://www.facebook.com/";
-  const mapsUrl = buildMapsUrl(config);
+  /* ------------------------------------------------------------
+   * updateContactLinks — single source of truth for every
+   * WhatsApp / Facebook / Instagram / Maps link on the page
+   * ---------------------------------------------------------- */
+  function updateContactLinks(config) {
+    const waUrl = buildWhatsAppUrl(config);
+    const fbUrl = config.facebookUrl || "https://www.facebook.com/";
+    const igUrl = config.instagramUrl || "https://www.instagram.com/";
+    const mapsUrl = buildMapsUrl(config);
 
-  // Asigna las URLs a todos los elementos con los atributos data-* correspondientes
-  document.querySelectorAll("[data-whatsapp-link]").forEach((el) => (el.href = waUrl));
-  document.querySelectorAll("[data-facebook-link]").forEach((el) => (el.href = fbUrl));
-  document.querySelectorAll("[data-maps-link]").forEach((el) => (el.href = mapsUrl));
+    document.querySelectorAll("[data-whatsapp-link]").forEach((el) => (el.href = waUrl));
+    document.querySelectorAll("[data-facebook-link]").forEach((el) => (el.href = fbUrl));
+    document.querySelectorAll("[data-instagram-link]").forEach((el) => (el.href = igUrl));
+    document.querySelectorAll("[data-maps-link]").forEach((el) => (el.href = mapsUrl));
 
-  // Maneja el estado cuando Facebook no está configurado en config.js
-  if (!config.facebookUrl) {
-    document.querySelectorAll("[data-facebook-link]").forEach((el) => {
-      el.setAttribute("aria-disabled", "true");
-      el.title = "Enlace de Facebook pendiente de configurar";
-    });
+    // Ocultar Instagram si no está configurado
+    if (!config.instagramUrl) {
+      document.querySelectorAll("[data-instagram-link]").forEach((el) => {
+        el.style.display = "none";
+        el.setAttribute("aria-disabled", "true");
+        el.title = "Enlace de Instagram pendiente de configurar";
+      });
+    }
+
+    // Maneja el estado cuando Facebook no está configurado
+    if (!config.facebookUrl) {
+      document.querySelectorAll("[data-facebook-link]").forEach((el) => {
+        el.setAttribute("aria-disabled", "true");
+        el.title = "Enlace de Facebook pendiente de configurar";
+      });
+    }
   }
-}
 
   /* ------------------------------------------------------------
    * applyBrand — school name, logo, enrollment text, SEO fields
@@ -185,6 +169,10 @@ function updateContactLinks(config) {
       data.geo = { "@type": "GeoCoordinates", latitude: loc.latitude, longitude: loc.longitude };
     }
     if (config.facebookUrl) data.sameAs = [config.facebookUrl];
+    if (config.instagramUrl) {
+      data.sameAs = data.sameAs || [];
+      data.sameAs.push(config.instagramUrl);
+    }
     if (config.seo.canonicalUrl) data.url = config.seo.canonicalUrl;
 
     const script = document.createElement("script");
@@ -338,7 +326,143 @@ function updateContactLinks(config) {
   }
 
   /* ------------------------------------------------------------
-   * initMobileMenu
+   * renderTestimonials — Carrusel automático
+   * ---------------------------------------------------------- */
+  function renderTestimonials(config) {
+    const container = document.querySelector("[data-testimonials]");
+    if (!container) return;
+    
+    const testimonials = config.testimonials || [];
+    if (testimonials.length === 0) {
+      container.innerHTML = `<p class="text-light">Próximamente testimonios de nuestras familias.</p>`;
+      return;
+    }
+
+    // Limpiar container
+    container.innerHTML = '';
+
+    // Crear el track de slides
+    const track = document.createElement("div");
+    track.className = "testimonials-track";
+    track.setAttribute("role", "list");
+
+    testimonials.forEach((t, i) => {
+      const slide = document.createElement("div");
+      slide.className = "testimonial-slide";
+      slide.setAttribute("role", "listitem");
+      slide.setAttribute("aria-label", `Testimonio ${i + 1} de ${testimonials.length}`);
+      slide.innerHTML = `
+        <blockquote>${t.text}</blockquote>
+        <cite class="author">${t.author}</cite>
+        <span class="relation">${t.relation}</span>
+      `;
+      track.appendChild(slide);
+    });
+
+    // Crear dots de navegación
+    const dotsContainer = document.createElement("div");
+    dotsContainer.className = "testimonials-dots";
+    dotsContainer.setAttribute("role", "tablist");
+
+    testimonials.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Ver testimonio ${i + 1}`);
+      dot.dataset.index = i;
+      if (i === 0) dot.classList.add("is-active");
+      dotsContainer.appendChild(dot);
+    });
+
+    container.appendChild(track);
+    container.appendChild(dotsContainer);
+
+    // Estado del carrusel
+    let currentIndex = 0;
+    const total = testimonials.length;
+    let intervalId = null;
+    let isPaused = false;
+
+    // Función para actualizar posición
+    function goToSlide(index) {
+      currentIndex = (index + total) % total;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Actualizar dots
+      const dots = dotsContainer.querySelectorAll("button");
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === currentIndex);
+        dot.setAttribute("aria-selected", i === currentIndex);
+      });
+    }
+
+    // Siguiente slide
+    function nextSlide() {
+      if (!isPaused) goToSlide(currentIndex + 1);
+    }
+
+    // Evento clicks en dots
+    dotsContainer.addEventListener("click", (e) => {
+      const dot = e.target.closest("button");
+      if (!dot) return;
+      const index = Number(dot.dataset.index);
+      if (!isNaN(index)) {
+        isPaused = true;
+        goToSlide(index);
+        clearInterval(intervalId);
+        setTimeout(() => {
+          isPaused = false;
+          startAutoPlay();
+        }, 8000);
+      }
+    });
+
+    // Auto-play con pausa al hover/touch
+    function startAutoPlay() {
+      clearInterval(intervalId);
+      intervalId = setInterval(nextSlide, 5000);
+    }
+
+    container.addEventListener("mouseenter", () => { isPaused = true; });
+    container.addEventListener("mouseleave", () => { 
+      isPaused = false; 
+      clearInterval(intervalId);
+      startAutoPlay();
+    });
+
+    container.addEventListener("touchstart", () => { isPaused = true; });
+    container.addEventListener("touchend", () => { 
+      setTimeout(() => {
+        isPaused = false;
+        clearInterval(intervalId);
+        startAutoPlay();
+      }, 3000);
+    });
+
+    startAutoPlay();
+    goToSlide(0);
+  }
+
+  /* ------------------------------------------------------------
+   * renderPhones — muestra los teléfonos en el footer y ubicación
+   * ---------------------------------------------------------- */
+  function renderPhones(config) {
+    const phones = config.phones || [];
+    const phoneContainers = document.querySelectorAll("[data-phones]");
+    
+    phoneContainers.forEach(container => {
+      container.innerHTML = phones.map(p => 
+        `<a href="${p.isWhatsApp ? `https://wa.me/${p.number.replace(/\D/g, '')}` : `tel:${p.number.replace(/\s/g, '')}`}" 
+            ${p.isWhatsApp ? 'target="_blank" rel="noopener"' : ''}
+            style="display:inline-block; margin:0 0.25rem;">
+            ${p.number}
+            ${p.isWhatsApp ? '📱' : ''}
+          </a>`
+      ).join('<span style="color: var(--color-border);"> · </span>');
+    });
+  }
+
+  /* ------------------------------------------------------------
+   * initMobileMenu — (mantenido por compatibilidad, pero oculto en CSS)
    * ---------------------------------------------------------- */
   function initMobileMenu() {
     const toggle = document.querySelector("[data-menu-toggle]");
@@ -393,13 +517,17 @@ function updateContactLinks(config) {
   }
 
   /* ------------------------------------------------------------
-   * initFloatingButtons — links already wired via updateContactLinks
+   * initFloatingButtons — oculta botones sin URL configurada
    * ---------------------------------------------------------- */
   function initFloatingButtons(config) {
-    // Hide the floating Facebook button entirely if not yet configured,
-    // rather than leaving a button that goes nowhere useful.
     if (!config.facebookUrl) {
       document.querySelectorAll(".fab-facebook").forEach((el) => (el.style.display = "none"));
+      document.querySelectorAll(".btn-facebook").forEach((el) => (el.style.display = "none"));
+    }
+    
+    if (!config.instagramUrl) {
+      document.querySelectorAll(".fab-instagram").forEach((el) => (el.style.display = "none"));
+      document.querySelectorAll(".btn-instagram").forEach((el) => (el.style.display = "none"));
     }
   }
 
@@ -446,7 +574,6 @@ function updateContactLinks(config) {
       if (e.key === "ArrowRight") stepLightbox(1);
     });
 
-    // Basic touch swipe support
     let touchStartX = null;
     lightbox.addEventListener("touchstart", (e) => (touchStartX = e.touches[0].clientX), { passive: true });
     lightbox.addEventListener(
@@ -518,175 +645,36 @@ function updateContactLinks(config) {
     items.forEach((el) => observer.observe(el));
   }
 
-  document.addEventListener("DOMContentLoaded", init);
-
   /* ------------------------------------------------------------
- * renderTestimonials — Carrusel automático
- * ---------------------------------------------------------- */
-function renderTestimonials(config) {
-  const container = document.querySelector("[data-testimonials]");
-  if (!container) return;
-  
-  const testimonials = config.testimonials || [];
-  if (testimonials.length === 0) {
-    container.innerHTML = `<p class="text-light">Próximamente testimonios de nuestras familias.</p>`;
-    return;
+   * INIT — entry point
+   * ---------------------------------------------------------- */
+  function init() {
+    const config = loadConfig();
+    if (!config) return;
+
+    document.documentElement.lang = "es";
+
+    updateContactLinks(config);
+    renderLevels(config);
+    renderSchedule(config);
+    renderValues(config);
+    renderMethodology(config);
+    renderSkills(config);
+    renderFacilities(config);
+    renderGallery(config);
+    renderTestimonials(config);
+    renderPhones(config);
+    applyBrand(config);
+
+    initMobileMenu();
+    initSmoothScroll();
+    initFloatingButtons(config);
+    initGallery();
+    initLightbox(config);
+    initScrollAnimations();
   }
 
-  // Crear el track de slides
-  const track = document.createElement("div");
-  track.className = "testimonials-track";
-  track.setAttribute("role", "list");
-
-  testimonials.forEach((t, i) => {
-    const slide = document.createElement("div");
-    slide.className = "testimonial-slide";
-    slide.setAttribute("role", "listitem");
-    slide.setAttribute("aria-label", `Testimonio ${i + 1} de ${testimonials.length}`);
-    slide.innerHTML = `
-      <blockquote>${t.text}</blockquote>
-      <cite class="author">${t.author}</cite>
-      <span class="relation">${t.relation}</span>
-    `;
-    track.appendChild(slide);
-  });
-
-  // Crear dots de navegación
-  const dotsContainer = document.createElement("div");
-  dotsContainer.className = "testimonials-dots";
-  dotsContainer.setAttribute("role", "tablist");
-
-  testimonials.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.setAttribute("role", "tab");
-    dot.setAttribute("aria-label", `Ver testimonio ${i + 1}`);
-    dot.dataset.index = i;
-    if (i === 0) dot.classList.add("is-active");
-    dotsContainer.appendChild(dot);
-  });
-
-  container.appendChild(track);
-  container.appendChild(dotsContainer);
-
-  // Estado del carrusel
-  let currentIndex = 0;
-  const total = testimonials.length;
-  let intervalId = null;
-  let isPaused = false;
-
-  // Función para actualizar posición
-  function goToSlide(index) {
-    currentIndex = (index + total) % total;
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
-    // Actualizar dots
-    const dots = dotsContainer.querySelectorAll("button");
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-active", i === currentIndex);
-      dot.setAttribute("aria-selected", i === currentIndex);
-    });
-  }
-
-  // Siguiente slide
-  function nextSlide() {
-    if (!isPaused) goToSlide(currentIndex + 1);
-  }
-
-  // Evento clicks en dots
-  dotsContainer.addEventListener("click", (e) => {
-    const dot = e.target.closest("button");
-    if (!dot) return;
-    const index = Number(dot.dataset.index);
-    if (!isNaN(index)) {
-      isPaused = true; // Pausa al interactuar
-      goToSlide(index);
-      // Reanudar después de 8 segundos de inactividad
-      clearInterval(intervalId);
-      setTimeout(() => {
-        isPaused = false;
-        startAutoPlay();
-      }, 8000);
-    }
-  });
-
-  // Auto-play con pausa al hover/touch
-  function startAutoPlay() {
-    clearInterval(intervalId);
-    intervalId = setInterval(nextSlide, 5000); // Cambio cada 5 segundos
-  }
-
-  // Pausar en hover
-  container.addEventListener("mouseenter", () => { isPaused = true; });
-  container.addEventListener("mouseleave", () => { 
-    isPaused = false; 
-    clearInterval(intervalId);
-    startAutoPlay();
-  });
-
-  // Pausar en touch (móvil)
-  container.addEventListener("touchstart", () => { isPaused = true; });
-  container.addEventListener("touchend", () => { 
-    setTimeout(() => {
-      isPaused = false;
-      clearInterval(intervalId);
-      startAutoPlay();
-    }, 3000);
-  });
-
-  // Iniciar auto-play
-  startAutoPlay();
-
-  // Asegurar que el primer slide esté visible
-  goToSlide(0);
-}
-
-/* ------------------------------------------------------------
- * renderPhones — muestra los teléfonos en el footer y ubicación
- * ---------------------------------------------------------- */
-function renderPhones(config) {
-  const phones = config.phones || [];
-  const phoneContainers = document.querySelectorAll("[data-phones]");
-  
-  phoneContainers.forEach(container => {
-    container.innerHTML = phones.map(p => 
-      `<a href="${p.isWhatsApp ? `https://wa.me/${p.number.replace(/\D/g, '')}` : `tel:${p.number.replace(/\s/g, '')}`}" 
-          ${p.isWhatsApp ? 'target="_blank" rel="noopener"' : ''}
-          style="display:inline-block; margin:0 0.25rem;">
-          ${p.number}
-          ${p.isWhatsApp ? '📱' : ''}
-        </a>`
-    ).join('<span style="color: var(--color-border);"> · </span>');
-  });
-}
-
-/* ------------------------------------------------------------
- * Actualizar init() para incluir nuevas funciones
- * ---------------------------------------------------------- */
-// Reemplaza la función init() existente con esta:
-function init() {
-  const config = loadConfig();
-  if (!config) return;
-
-  document.documentElement.lang = "es";
-
-  updateContactLinks(config);
-  renderLevels(config);
-  renderSchedule(config);
-  renderValues(config);
-  renderMethodology(config);
-  renderSkills(config);
-  renderFacilities(config);
-  renderGallery(config);
-  renderTestimonials(config);
-  renderPhones(config);
-  applyBrand(config);
-
-  initMobileMenu();
-  initSmoothScroll();
-  initFloatingButtons(config);
-  initGallery();
-  initLightbox(config);
-  initScrollAnimations();
-}
+  // Iniciar cuando el DOM esté listo
+  document.addEventListener("DOMContentLoaded", init);
 
 })();
