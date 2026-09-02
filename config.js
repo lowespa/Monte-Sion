@@ -69,7 +69,7 @@ const CONFIG = {
   levels: [
     {
       name: "Pre-Kínder",
-      age: "3 a 4 años",
+      age: "4 años cumplidos",
       description:
         "Un espacio donde los niños y niñas comienzan su camino escolar a través del juego, la exploración y el descubrimiento.",
       image: "assets/img/nivel-pre-kinder.jpg",
@@ -78,7 +78,7 @@ const CONFIG = {
     },
     {
       name: "Kínder",
-      age: "4 a 5 años",
+      age: "5 años cumplidos",
       description:
         "Preparamos a los niños y niñas para su transición a la educación básica, fortaleciendo su autonomía y habilidades sociales.",
       image: "assets/img/nivel-kinder.jpg",
@@ -99,8 +99,8 @@ const CONFIG = {
       },
       afternoon: {
         label: "Jornada tarde",
-        start: "14:00",
-        end: "17:30"
+        start: "13:45",
+        end: "17:45"
       }
     }
   },
@@ -175,6 +175,28 @@ const CONFIG = {
     { image: "assets/img/galeria-6.jpg", alt: "Patio de Monte Sión" },
     { image: "assets/img/galeria-7.jpg", alt: "Actividad educativa en Monte Sión" },
     { image: "assets/img/galeria-8.jpg", alt: "Instalaciones de Monte Sión" }
+  ],
+
+  // ==============================
+  // DOCUMENTOS INSTITUCIONALES
+  // ==============================
+  documents: [
+    {
+      title: "Proyecto Educativo",
+      description: "Conoce nuestra propuesta pedagógica, misión, visión y los principios que guían la educación en Monte Sión.",
+      pdf: "assets/docs/proyecto.pdf",
+      image: "assets/img/proyecto.png",
+      icon: "book-open",
+      buttonText: "Descargar PDF"
+    },
+    {
+      title: "Reglamento Interno",
+      description: "Normas y procedimientos que regulan la convivencia escolar y el funcionamiento de nuestra comunidad educativa.",
+      pdf: "assets/docs/reglamento.pdf",
+      image: "assets/img/reglamento.png",
+      icon: "file-text",
+      buttonText: "Descargar PDF"
+    }
   ],
 
   // ==============================

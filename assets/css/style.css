@@ -1114,3 +1114,112 @@ input:focus-visible {
     background-color: #c13542;
   }
 }
+
+/* ============================================================
+   DOCUMENTOS INSTITUCIONALES
+   ============================================================ */
+.documents-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.document-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.document-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.document-card .doc-image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.document-card .doc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.document-card:hover .doc-image img {
+  transform: scale(1.03);
+}
+
+.document-card .doc-body {
+  padding: var(--space-3);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.document-card .doc-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.document-card .doc-body p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  flex: 1;
+  margin-bottom: var(--space-2);
+}
+
+.document-card .doc-body .btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  align-self: flex-start;
+}
+
+.document-card .doc-body .btn-download:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.03);
+}
+
+.document-card .doc-body .btn-download:active {
+  transform: scale(0.97);
+}
+
+.document-card .doc-body .btn-download svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .documents-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 860px) {
+  .document-card {
+    flex-direction: column;
+  }
+}

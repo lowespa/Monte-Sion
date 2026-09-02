@@ -462,6 +462,43 @@
   }
 
   /* ------------------------------------------------------------
+   * renderDocuments — Proyecto Educativo y Reglamento
+   * ---------------------------------------------------------- */
+  function renderDocuments(config) {
+    const container = document.querySelector("[data-documents]");
+    if (!container) return;
+    
+    const docs = config.documents || [];
+    if (docs.length === 0) {
+      container.innerHTML = `<p class="text-light">Documentos disponibles próximamente.</p>`;
+      return;
+    }
+
+    container.innerHTML = docs
+      .map(
+        (doc) => `
+      <div class="document-card" data-reveal>
+        <div class="doc-image">
+          <img src="${doc.image}" alt="${doc.title} — Escuela de Párvulos Monte Sión" loading="lazy" decoding="async">
+        </div>
+        <div class="doc-body">
+          <h3>${doc.title}</h3>
+          <p>${doc.description}</p>
+          <a href="${doc.pdf}" download class="btn-download" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            ${doc.buttonText || "Descargar PDF"}
+          </a>
+        </div>
+      </div>`
+      )
+      .join("");
+  }
+
+  /* ------------------------------------------------------------
    * initMobileMenu — (mantenido por compatibilidad, pero oculto en CSS)
    * ---------------------------------------------------------- */
   function initMobileMenu() {
@@ -664,6 +701,7 @@
     renderGallery(config);
     renderTestimonials(config);
     renderPhones(config);
+    renderDocuments(config);  // <--- NUEVA FUNCIÓN AGREGADA
     applyBrand(config);
 
     initMobileMenu();
