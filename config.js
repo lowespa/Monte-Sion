@@ -26,7 +26,7 @@ const CONFIG = {
   phones: [
     { number: "+56 9 7855 1360", label: "WhatsApp", isWhatsApp: false },
     { number: "+56 45 231 7514", label: "Teléfono" },
-    { number: "+56 9 7855 0869", label: "Teléfono" }
+   // { number: "+56 9 7855 0869", label: "Teléfono" }
   ],
   // Teléfono principal para WhatsApp (el que se usa en los botones)
   whatsappNumber: "56930606424",
