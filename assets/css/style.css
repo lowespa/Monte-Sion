@@ -6,18 +6,18 @@
    10. Educational proposal  11. Levels  12. Values
    13. Facilities 14. Gallery 15. Lightbox 16. Location
    17. Enrollment CTA 18. Floating buttons 19. Footer
-   20. Responsive 21. Accessibility
+   20. Responsive 21. Accessibility 22. After School
    ============================================================ */
 
 /* ============================================================
    1. VARIABLES
    ============================================================ */
 :root {
-  /* Color: forest green + marigold + sage, warm paper background. */
   --color-primary: #2f6b4f;
   --color-primary-dark: #1e4a34;
   --color-primary-light: #dcece2;
   --color-secondary: #e8a33d;
+  --color-secondary2: #f1efed;
   --color-secondary-dark: #c8842a;
   --color-accent: #7fa88a;
   --color-background: #fbf8f2;
@@ -28,8 +28,8 @@
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #1da851;
   --color-facebook: #1877f2;
+  --color-instagram: #E4405F;
 
-  /* Type */
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -39,7 +39,6 @@
   --fs-body: clamp(1rem, 0.4vw + 0.9rem, 1.05rem);
   --fs-small: 0.875rem;
 
-  /* Layout */
   --max-width: 1200px;
   --radius-sm: 12px;
   --radius-md: 20px;
@@ -771,20 +770,17 @@ body.menu-open { overflow: hidden; }
    20. RESPONSIVE & ADJUSTMENTS
    ============================================================ */
 
-/* Prevenir desbordamientos horizontales */
 html, body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
-/* BARRA FLOTANTE MÓVIL (STICKY CTA) */
 .floating-actions-mobile {
-  display: none; /* Oculto por defecto en desktop */
+  display: none;
 }
 
 @media (max-width: 767px) {
-  /* 1. OCULTAR ICONOS Y BOTONES FLOTANTES INDIVIDUALES EN MÓVIL */
   .floating-actions,
   .floating-buttons,
   .floating-whatsapp,
@@ -800,9 +796,6 @@ html, body {
     pointer-events: none !important;
   }
 
-  /* 2. GRILLAS ADAPTADAS EN MÓVIL */
-
-  /* Grilla general de tarjetas (Valores, Métodos, Habilidades, etc.): 3 columnas */
   .grid-cards,
   .values-grid,
   .skills-grid,
@@ -813,14 +806,12 @@ html, body {
     gap: 0.5rem !important;
   }
 
-  /* SECCIÓN NUESTROS NIVELES: Exactamente 2 tarjetas por fila */
   .levels-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
   }
 
-  /* Compactación para celdas de la grilla en móvil */
   .card, 
   .value-card, 
   .level-card, 
@@ -856,7 +847,6 @@ html, body {
     margin-inline: auto;
   }
 
-  /* 3. BARRA STICKY INFERIOR FIJA */
   .floating-actions-mobile {
     position: fixed;
     bottom: 0;
@@ -910,7 +900,7 @@ html, body {
   }
 
   body {
-    padding-bottom: 75px !important; /* Espacio para no solapar el footer con la barra flotante */
+    padding-bottom: 75px !important;
   }
 }
 
@@ -1014,7 +1004,6 @@ input:focus-visible {
   border: 0;
 }
 
-/* Scroll reveal */
 [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
@@ -1025,91 +1014,49 @@ input:focus-visible {
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .testimonials-track { transition: none; }
 }
+
 /* ============================================================
    ELIMINAR MENÚ EN MÓVIL - LANDING PURA
    ============================================================ */
+.menu-toggle { display: none !important; }
+.mobile-nav { display: none !important; }
 
-/* Ocultar el botón de menú en todos los dispositivos */
-.menu-toggle {
-  display: none !important;
-}
-
-/* Ocultar navegación móvil */
-.mobile-nav {
-  display: none !important;
-}
-
-/* En móviles, ocultar navegación desktop y mostrar solo CTA */
 @media (max-width: 959px) {
-  .main-nav {
-    display: none !important;
-  }
-  
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .brand {
-    flex: 1;
-  }
-  
-  .header-cta {
-    display: inline-flex !important;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
+  .main-nav { display: none !important; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; }
+  .brand { flex: 1; }
+  .header-cta { display: inline-flex !important; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
 }
 
-/* En desktop, mostrar navegación normal */
 @media (min-width: 960px) {
-  .main-nav {
-    display: block !important;
-  }
-  
-  .header-cta {
-    display: inline-flex !important;
-  }
+  .main-nav { display: block !important; }
+  .header-cta { display: inline-flex !important; }
 }
 
 /* ============================================================
    INSTAGRAM - COLOR Y ESTILOS
    ============================================================ */
-
-:root {
-  --color-instagram: #E4405F;
-}
-
-/* Botón Instagram en footer y galería */
 .btn-instagram {
   background: var(--color-instagram);
   color: #fff;
   border-color: var(--color-instagram);
 }
-
 .btn-instagram:hover {
   background: #c13542;
   border-color: #c13542;
   color: #fff;
 }
-
-/* Botón flotante Instagram */
 .fab-instagram {
   background: var(--color-instagram);
   color: #fff;
 }
-
 .fab-instagram:hover {
   background: #c13542;
 }
-
-/* Barra sticky móvil - Instagram */
 @media (max-width: 767px) {
   .floating-actions-mobile .btn-instagram {
     background-color: var(--color-instagram);
   }
-  
   .floating-actions-mobile .btn-instagram:hover {
     background-color: #c13542;
   }
@@ -1221,5 +1168,140 @@ input:focus-visible {
 @media (min-width: 860px) {
   .document-card {
     flex-direction: column;
+  }
+}
+
+/* ============================================================
+   22. AFTER SCHOOL — Nueva sección
+   ============================================================ */
+.after-school-section {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.after-school-section::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: var(--color-secondary);
+  opacity: 0.18;
+  border-radius: var(--blob-shape);
+  top: -80px;
+  right: -80px;
+  pointer-events: none;
+}
+
+.after-school-section::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: var(--color-accent);
+  opacity: 0.15;
+  border-radius: var(--blob-shape);
+  bottom: -70px;
+  left: -70px;
+  pointer-events: none;
+}
+
+.after-school-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.after-school-section .eyebrow {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.after-school-section h2 {
+  color: #fff;
+  margin-bottom: var(--space-2);
+}
+
+.after-school-highlight {
+  display: inline-block;
+  background: var(--color-secondary2);
+  color: var(--color-primary-dark);
+  padding: 0.1em 0.5em;
+  border-radius: 0.4em;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.after-school-lede {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  max-width: 38rem;
+  margin: 0 auto var(--space-3);
+}
+
+/* Botón de dos líneas */
+.btn-after-school {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 1rem 2.2rem;
+  background: var(--color-secondary);
+  color: var(--color-primary-dark);
+  border-radius: 999px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.15;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-after-school__title {
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.btn-after-school__subtitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0.85;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+}
+
+.btn-after-school:hover {
+  background: var(--color-secondary-dark);
+  color: #fff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+}
+
+.btn-after-school:active {
+  transform: scale(0.97);
+}
+
+.btn-after-school:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .btn-after-school {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.9rem 1.5rem;
+  }
+  .btn-after-school__title {
+    font-size: 1rem;
+  }
+  .btn-after-school__subtitle {
+    font-size: 0.78rem;
   }
 }
