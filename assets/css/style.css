@@ -7,6 +7,7 @@
    13. Facilities 14. Gallery 15. Lightbox 16. Location
    17. Enrollment CTA 18. Floating buttons 19. Footer
    20. Responsive 21. Accessibility 22. After School
+   23. Horario Jornada Matutina
    ============================================================ */
 
 /* ============================================================
@@ -1303,5 +1304,55 @@ input:focus-visible {
   }
   .btn-after-school__subtitle {
     font-size: 0.78rem;
+  }
+}
+
+/* ============================================================
+   23. HORARIO JORNADA MATUTINA (Dentro de Matrículas)
+   ============================================================ */
+.enrollment-schedule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: var(--space-2) auto var(--space-3);
+  padding: 0.6rem 1.6rem;
+  background: rgba(255, 255, 255, 0.15); /* Fondo semitransparente */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.95rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.enrollment-schedule__text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+}
+
+.enrollment-schedule__text strong {
+  font-weight: 800;
+  color: var(--color-secondary); /* Palabra "Jornada matutina" en naranja */
+  letter-spacing: 0.02em;
+}
+
+.enrollment-schedule__text span {
+  color: #fff;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .enrollment-schedule {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    gap: 0.4rem;
   }
 }
